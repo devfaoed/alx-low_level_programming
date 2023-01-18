@@ -2,24 +2,27 @@
 #include <stdlib.h>
 
 /**
- * main - multiplies two numbers
- * @argc: number of arguments passed to the function
- * @argv: argument vector of pointers to strings
- *
- * Return: 0 if no errors, else 1
+ * main - multiplies two nums
+ * @argc: args count
+ * @argv: arg vector
+ * Return: 0
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int a, b, c;
+	int x;
 
-	if (argc != 3)
+	if (argc < 3 || argc > 3)
 	{
-		puts("Error");
-		return (1);
+		printf("Error\n");
+		x = 1;
 	}
-	a = atoi(argv[1]);
-	b = atoi(argv[2]);
-	c = a * b;
-	printf("%d\n", c);
-	return (0);
+	else
+	{
+		int a = atoi(argv[1]), b = atoi(argv[2]);
+
+		printf("%d\n", a * b);
+		x = 0;
+	}
+
+	return (x);
 }

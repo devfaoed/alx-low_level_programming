@@ -1,16 +1,19 @@
 #include "main.h"
-/**
- * _isalpha - its a function in the main header that allows us to print
- * @c: an integer argument
- * Return: Always returns 0
- */
 
+/**
+ * _isalpha - Checks if it is alpha
+ * Description: Checks letters
+ * @c: Param
+ * Return: Zero
+ */
 int _isalpha(int c)
 {
-if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-{
-return (1);
-}
-else
-return (0);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }

@@ -1,11 +1,10 @@
-#include <stdio.h>
+#include "lists.h"
 
 void first(void) __attribute__ ((constructor));
 
 /**
- * first - prints a sentence before the main
- * function is executed
- * Return: returns nothing
+ * first - prints a sentence
+ * Return: void
  */
 void first(void)
 {

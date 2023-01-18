@@ -1,45 +1,94 @@
-#include <stdlib.h>
 #include "dog.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 /**
- * new_dog - creates a new dog
- * @name: name of dog
- * @age: age of dog
- * @owner: owner of dog
- * Return: pointer to new dog
+ * _strlen - Gives length og string
+ * @s: Param
+ * Return: length of string
+ */
+int _strlen(char *s)
+{
+	int i = 0, x = 0;
+
+	while (s[i] != '\0')
+	{
+		x++;
+		i++;
+	}
+
+	return (x);
+}
+
+/**
+ * _strcpy - I'm trying hard to understand
+ * @dest: Copy destination
+ * @src: source of string to be copied
+ * Return: The pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i, n = 0;
+
+	while (src[n] != '\0')
+	{
+		n++;
+	}
+
+	i = 0;
+	while (i < n && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+
+	i = i;
+	while (i <= n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
+
+
+/**
+ * new_dog - ...
+ * @name: ...
+ * @age: ...
+ * @owner: ...
+ *
+ * Return: ...
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	unsigned int nl, ol, i;
-	dog_t *dog;
+	dog_t *doggy;
 
-	if (name == NULL || owner == NULL)
+	if (name == NULL || age < 0 || owner == NULL)
 		return (NULL);
-	dog = malloc(sizeof(dog_t));
-	if (dog == NULL)
+
+	doggy = malloc(sizeof(dog_t));
+	if (doggy == NULL)
 		return (NULL);
-	for (nl = 0; name[nl]; nl++)
-		;
-	nl++;
-	dog->name = malloc(nl * sizeof(char));
-	if (dog->name == NULL)
+
+	doggy->name = malloc(sizeof(char) * (_strlen(name) + 1));
+	if (doggy->name == NULL)
 	{
-		free(dog);
+		free(doggy);
 		return (NULL);
 	}
-	for (i = 0; i < nl; i++)
-		dog->name[i] = name[i];
-	dog->age = age;
-	for (ol = 0; owner[ol]; ol++)
-		;
-	ol++;
-	dog->owner = malloc(ol * sizeof(char));
-	if (dog->owner == NULL)
+
+	doggy->owner = malloc(sizeof(char) * (_strlen(owner) + 1));
+	if (doggy->owner == NULL)
 	{
-		free(dog->name);
-		free(dog);
+		free(doggy->name);
+		free(doggy);
 		return (NULL);
 	}
-	for (i = 0; i < ol; i++)
-		dog->owner[i] = owner[i];
-	return (dog);
+
+	doggy->name = _strcpy(doggy->name, name);
+	doggy->age = age;
+	doggy->owner = _strcpy(doggy->owner, owner);
+
+	return (doggy);
 }
